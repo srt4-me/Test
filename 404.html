@@ -16,14 +16,6 @@
   <p id="2"></p>
   <p id="3"></p>
 
-  <script>
-    //=== Config
-    const GITHUB_OWNER = "srt4.me";
-    const GITHUB_REPO  = "srt4.me-db";
-
-
-  </script>
-
   <script> //testet
     //==Loop prevention or rate limit
 function Ratelimited()
@@ -121,19 +113,17 @@ function RedirectIssueTitle(url){
 function UpdateLine(id, txt){
   document.getElementById(id).innerHTML = txt;
 }
-  </script>
-
-  <script> //testing
+//testing
     //===Config===
 var apiURL = "https://api.github.com/repos";
 var repoUrl = "/srt4-me/srt4.me-DB"
 var entpoint = "/issues"
 //===Config End===
 
-var pathname = 
-new URL(window.location.href).pathname.split("/");
+var pathname = new URL(window.location.href).pathname.split("/");
 
-nr = pathname[0];
+var nr = pathname[1];
+alert(nr);
 var issueUrl = apiURL + repoUrl + entpoint + "/" + nr;
 
 if (Ratelimited()){
