@@ -113,6 +113,110 @@ function RedirectIssueTitle(url){
 function UpdateLine(id, txt){
   document.getElementById(id).innerHTML = txt;
 }
+//testing
+    //===Config===
+var apiURL = "https://api.github.com/repos";
+var repoUrl = "/srt4-me/srt4.me-DB"
+var entpoint = "/issues"
+//===Config End===
+
+var pathname = new URL(window.location.href).pathname.split("/");
+
+var nr = pathname[1];
+alert(nr);
+var issueUrl = apiURL + repoUrl + entpoint + "/" + nr;
+
+if (Ratelimited()){
+  alert("Ratelimited or Forward Looped");
+}
+else{
+  RedirectIssueTitle(issueUrl);
+}
+  </script>
+  <!--
+  <script src="complete.js"></script>
+  <script src="main.js"></script>
+  -->
+</body>
+</html>        return true;
+      }
+    }
+   
+   //update last redirect and return
+    sessionStorage.setItem
+    (sesStorPath, Date.now());
+    return result;
+  }
+
+function AddHttps(url){
+  var urlUpperCase = url.toUpperCase();
+  if(
+    !urlUpperCase.startsWith("HTTP://")
+ && !urlUpperCase.startsWith("HTTPS://"))
+ {
+   url = "https://" + url;
+  }
+  return url;
+}
+ 
+function isValidUrl(url){
+  try{
+      new URL(url);
+      return true
+    }
+    catch (e) {
+      alert(e);
+      return false;
+  }
+}
+  
+  function Redirect(url){
+    //similar to HTTP redirect
+    try{
+      window.location.href = url;
+    }
+    catch{
+    // similar to clicking a link
+    window.location.replace(url);
+    }
+  }
+  
+function RedirectIssueTitle(url){
+  let xhr = new XMLHttpRequest();
+
+  //Configure as GET-request
+  xhr.open('GET', url);
+
+  //Send the request over the network
+  xhr.send();
+
+  //called after response
+  xhr.onload = function() {
+    if (xhr.status != 200) { 
+      //analyze HTTP status of the response
+      UpdateLine("2", "Aborted")
+      UpdateLine("3", `DB-Entry: ${xhr.responseURL} Error ${xhr.status}: ${xhr.statusText}`); 
+    } else {
+      //response
+      var title = JSON.parse(xhr.response).title;
+      var url = AddHttps(title);
+      if (isValidUrl(url)){
+        Redirect(url);
+      }
+      else {
+        alert("invalid URL: " + url);
+      }
+  }
+  };
+
+  xhr.onerror = function() {
+    alert("Request failed");
+  };''
+}
+
+function UpdateLine(id, txt){
+  document.getElementById(id).innerHTML = txt;
+}
   </script>
 
   <script> //testing
