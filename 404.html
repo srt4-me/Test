@@ -122,7 +122,7 @@ var entpoint = "/issues"
 
 var pathname = new URL(window.location.href).pathname.split("/");
 
-var nr = pathname[pathname.length];
+var nr = pathname[pathname.length - 1];
 alert(nr);
 var issueUrl = apiURL + repoUrl + entpoint + "/" + nr;
 
