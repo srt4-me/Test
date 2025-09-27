@@ -17,7 +17,13 @@
   <p id="3"></p>
 
   <script> //testet
-    //==Loop prevention or rate limit
+  //===Config===
+var apiURL = "https://api.github.com/repos";
+var repoUrl = "/srt4-me/srt4.me-DB"
+var entpoint = "/issues"
+//===Config End===
+
+//==Loop prevention or rate limit
 function Ratelimited()
   {
     //false default first opening
@@ -113,21 +119,16 @@ function RedirectIssueTitle(url){
 function UpdateLine(id, txt){
   document.getElementById(id).innerHTML = txt;
 }
-//testing
-    //===Config===
-var apiURL = "https://api.github.com/repos";
-var repoUrl = "/srt4-me/srt4.me-DB"
-var entpoint = "/issues"
-//===Config End===
+
 
 var pathname = new URL(window.location.href).pathname.split("/");
 
-var nr = pathname[pathname.length - 1];
-alert(nr);
+var nr = pathname[1];
 var issueUrl = apiURL + repoUrl + entpoint + "/" + nr;
 
 if (Ratelimited()){
-  alert("Ratelimited or Forward Looped");
+  UpdateLine("2", "Aborted");
+  UpdateLine("3", "Ratelimited or Forward Looped")
 }
 else{
   RedirectIssueTitle(issueUrl);
