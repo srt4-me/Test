@@ -17,13 +17,7 @@
   <p id="3"></p>
 
   <script> //testet
-  //===Config===
-var apiURL = "https://api.github.com/repos";
-var repoUrl = "/srt4-me/srt4.me-DB"
-var entpoint = "/issues"
-//===Config End===
-
-//==Loop prevention or rate limit
+    //==Loop prevention or rate limit
 function Ratelimited()
   {
     //false default first opening
@@ -120,6 +114,11 @@ function UpdateLine(id, txt){
   document.getElementById(id).innerHTML = txt;
 }
 
+//===Config===
+var apiURL = "https://api.github.com/repos";
+var repoUrl = "/srt4-me/srt4.me-DB"
+var entpoint = "/issues"
+//===Config End===
 
 var pathname = new URL(window.location.href).pathname.split("/");
 
